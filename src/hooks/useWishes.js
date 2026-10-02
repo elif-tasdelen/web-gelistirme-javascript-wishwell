@@ -18,7 +18,7 @@ export function useWishes() {
   }, [wishes])
 
   const addWish = (data) =>
-    setWishes((list) => [...list, { ...data, id: crypto.randomUUID() }])
+    setWishes((list) => [...list, { ...data, id: crypto.randomUUID(), purchasedAt: null }])
 
   const updateWish = (id, changes) =>
     setWishes((list) => list.map((w) => (w.id === id ? { ...w, ...changes } : w)))
