@@ -1,4 +1,4 @@
-# WishWell
+# WishWell - Web Geliştirme; JavaScript
 
 **Bir para at, bir dilek tut.**
 
@@ -6,7 +6,7 @@ WishWell; almak istediğin şeyleri dilek olarak kaydettiğin, birikimini bir di
 
 🔗 **Canlı demo:** _yakında_
 
-![WishWell masaüstü görünümü](screenshots/desktop.png)
+![WishWell masaüstü görünümü](screenshots/web-1.png)
 
 ## Özellikler
 
@@ -47,8 +47,8 @@ src/
 ## Kurulum
 
 ```bash
-git clone https://github.com/elif-tasdelen/wishwell.git
-cd wishwell
+git clone https://github.com/elif-tasdelen/web-gelistirme-javascript-wishwell.git
+cd web-gelistirme-javascript-wishwell
 npm install
 npm run dev
 ```
@@ -56,8 +56,17 @@ npm run dev
 Uygulama varsayılan olarak `http://localhost:5173` adresinde açılır.
 
 ## Mobil Görünüm
+## Ekran Görüntüleri
 
-<img src="screenshots/mobile.png" alt="WishWell mobil görünümü" width="320" />
+### Masaüstü
+
+![Masaüstü 2](screenshots/web-2.png)
+![Masaüstü 3](screenshots/web-3.png)
+
+### Mobil
+
+<img src="screenshots/mobil-1.png" alt="Mobil görünüm 1" width="320" /> <img src="screenshots/mobil-2.png" alt="Mobil görünüm 2" width="320" />
+
 
 ---
 
