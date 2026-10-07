@@ -1,1 +1,130 @@
 @import "tailwindcss";
+
+@theme static {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --color-sand-50: #fbf8f3;
+  --color-sand-100: #f4ede2;
+  --color-sand-200: #e8dccb;
+  --color-sand-300: #d6c4aa;
+  --color-sand-400: #bba486;
+  --color-sand-500: #9f8668;
+
+  --color-lagoon-50: #f1f8f7;
+  --color-lagoon-100: #dcefec;
+  --color-lagoon-200: #bfe3de;
+  --color-lagoon-300: #93d1ca;
+  --color-lagoon-400: #66b9b2;
+  --color-lagoon-500: #469f99;
+  --color-lagoon-600: #37847f;
+  --color-lagoon-700: #2e6b67;
+
+  --color-sage-100: #e6efdd;
+  --color-sage-200: #cfe1c0;
+  --color-sage-300: #b2cf9c;
+  --color-sage-400: #93b97b;
+
+  --color-honey-50: #fff9ec;
+  --color-honey-100: #fdefcf;
+  --color-honey-200: #fbe0a3;
+  --color-honey-300: #f7cc6c;
+  --color-honey-400: #f2b443;
+  --color-honey-500: #e39a24;
+  --color-honey-700: #9c5f15;
+  --color-honey-900: #663e16;
+  --color-honey-950: #3a2109;
+}
+
+.paper {
+  background-color: #fffdf8;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 27px, #dcefec 27px 28px);
+}
+
+/* su */
+@keyframes flow    { to { stroke-dashoffset: -32; } }
+@keyframes shimmer { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.9; } }
+@keyframes splash {
+  0%   { transform: scale(0.3); opacity: 0.9; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@keyframes ripple {
+  0%   { transform: scale(0.2); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+@keyframes splash-drop {
+  0%   { transform: translate(0, 0); opacity: 1; }
+  45%  { transform: translate(var(--x), -14px); opacity: 1; }
+  100% { transform: translate(calc(var(--x) * 1.6), 2px); opacity: 0; }
+}
+
+/* coin: hazırlan → yüksel (yavaşlayarak) → düş (hızlanarak) */
+@keyframes coin-fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    animation-timing-function: cubic-bezier(0.2, 0, 0.4, 1);
+  }
+  14% {
+    transform: translate(0, -8px) scale(1.15);
+    animation-timing-function: cubic-bezier(0.25, 0.6, 0.4, 1);
+  }
+  55% {
+    transform: translate(calc(var(--dx) * 0.55), calc(var(--dy) * 0.55 - 80px)) scale(0.7);
+    animation-timing-function: cubic-bezier(0.6, 0, 0.9, 0.6);
+  }
+  92%  { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.22); opacity: 0; }
+}
+@keyframes coin-flip {
+  0%, 50%, 100% { transform: scaleX(1); }
+  25%, 75%      { transform: scaleX(0.12); }
+}
+@keyframes coin-in {
+  0%   { transform: translateY(14px) scale(0.6); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+@keyframes coin-idle { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+
+/* genel */
+@keyframes float-up {
+  0%   { transform: translateY(0); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(-24px); opacity: 0; }
+}
+@keyframes paper-in {
+  0%   { opacity: 0; transform: translateY(-12px) rotate(-6deg) scale(0.95); }
+  100% { opacity: 1; transform: none; }
+}
+
+.streak      { stroke-dasharray: 10 22; animation: flow 1s linear infinite; }
+.shimmer     { animation: shimmer 2.4s ease-in-out infinite; }
+.splash      { transform-box: fill-box; transform-origin: center; animation: splash 1.2s ease-out infinite; }
+.ripple      { transform-box: fill-box; transform-origin: center; animation: ripple 800ms ease-out both; }
+.splash-drop { animation: splash-drop 600ms ease-out forwards; }
+.coin-fly    { animation: coin-fly 620ms linear forwards; }
+.coin-flip   { animation: coin-flip 620ms linear; }
+.coin-in     { animation: coin-in 380ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.coin-idle   { animation: coin-idle 2.8s ease-in-out infinite; }
+.float-up    { animation: float-up 900ms ease-out forwards; }
+.paper-in    { animation: paper-in 400ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .streak, .shimmer, .splash, .ripple, .splash-drop, .coin-flip,
+  .coin-in, .coin-idle, .float-up, .paper-in { animation: none; }
+  .coin-fly { animation-duration: 1ms; }
+  .droplet { display: none; }
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+.dialog-backdrop { animation: fade-in 200ms ease-out; }
+.dialog-panel    { animation: pop-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.menu-in         { animation: pop-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1); transform-origin: top right; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog-backdrop, .dialog-panel, .menu-in { animation: none; }
+}

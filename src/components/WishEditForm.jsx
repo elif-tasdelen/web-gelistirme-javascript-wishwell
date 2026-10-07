@@ -19,7 +19,7 @@ export default function WishEditForm({ wish, onSave, onCancel }) {
   }
 
   const inputClass =
-    'w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-pink-500'
+    'w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-lagoon-500'
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
@@ -44,7 +44,7 @@ export default function WishEditForm({ wish, onSave, onCancel }) {
           İptal
         </button>
         <button type="submit"
-                className="bg-pink-600 text-white rounded-lg px-3 py-1 font-medium hover:bg-pink-700">
+                className="bg-lagoon-600 text-white rounded-lg px-3 py-1 font-medium hover:bg-lagoon-700">
           Kaydet
         </button>
       </div>

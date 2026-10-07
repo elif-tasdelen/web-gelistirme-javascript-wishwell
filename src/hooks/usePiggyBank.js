@@ -16,6 +16,7 @@ export function usePiggyBank() {
 
   const deposit = (amount) => setBalance((b) => b + amount)
   const withdraw = (amount) => setBalance((b) => Math.max(0, b - amount))
+  const reset = () => setBalance(0)
 
-  return { balance, deposit, withdraw }
+  return { balance, deposit, withdraw, reset }
 }
