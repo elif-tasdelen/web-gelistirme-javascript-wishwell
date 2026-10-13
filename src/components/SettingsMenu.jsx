@@ -57,7 +57,7 @@ export default function SettingsMenu({ balance, onResetBalance }) {
             className="w-full text-left px-3 py-2 rounded-xl hover:bg-rose-50 transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
           >
             <span className="block font-semibold text-rose-600">Birikimi sıfırla</span>
-            <span className="block text-xs text-slate-500">Çeşmedeki {formatTL(balance)} silinir</span>
+            <span className="block text-xs text-slate-500">Çeşmedeki birikim silinir</span>
           </button>
         </div>
       )}
